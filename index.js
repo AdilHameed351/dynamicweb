@@ -2,21 +2,21 @@ require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const hbs = require("hbs");
-require("./db/conn");
+require("./src/db/conn");
 const app = express();
-const User = require("./models/usermessage");
+const User = require("./src/models/usermessage");
 
 const port = process.env.PORT || 3000;
 
 // setting the path
-const staticPath = path.join(__dirname, "../public");
-const templatePath = path.join(__dirname, "../templates/views");
-const partialPath = path.join(__dirname, "../templates/partials");
+const staticPath = path.join(__dirname, "./public");
+const templatePath = path.join(__dirname, "./templates/views");
+const partialPath = path.join(__dirname, "./templates/partials");
 
 // middleware
-app.use("/css", express.static(path.join(__dirname, "../node_modules/bootstrap/dist/css")));
-app.use("/js", express.static(path.join(__dirname, "../node_modules/bootstrap/dist/js")));
-app.use("/jq", express.static(path.join(__dirname, "../node_modules/jquery/dist")));
+app.use("/css", express.static(path.join(__dirname, "./node_modules/bootstrap/dist/css")));
+app.use("/js", express.static(path.join(__dirname, "./node_modules/bootstrap/dist/js")));
+app.use("/jq", express.static(path.join(__dirname, "./node_modules/jquery/dist")));
 app.use(express.static(staticPath));
 app.use(express.urlencoded({extended: false}));
 app.set("view engine", "hbs");
